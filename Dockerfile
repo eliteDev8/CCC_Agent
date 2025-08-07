@@ -14,6 +14,7 @@ COPY ./backend ./backend
 # (don't fail if secrets aren't set in local dev)
 RUN mkdir -p /backend && \
     if [ -f /etc/secrets/render-env ]; then cp /etc/secrets/render-env /backend/.env; fi && \
+    if [ -f /etc/secrets/.env ]; then cp /etc/secrets/.env /backend/.env; fi && \
     if [ -f /etc/secrets/gDriver.json ]; then cp /etc/secrets/gDriver.json /backend/gDriver.json; fi
 
 
