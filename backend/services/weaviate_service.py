@@ -19,21 +19,21 @@ def setup_schema():
             logger.warning(f"Weaviate not ready, retrying in 5s... ({e})")
             time.sleep(5)
     
-    if "ChatMessage" not in client.collections.list_all():
-        client.collections.create(
-            "ChatMessage",
-            vectorizer_config=[
-                wvc.config.Configure.NamedVectors.text2vec_transformers(
-                    name="text_vector",
-                    source_properties=["text"]
-                )
-            ],
-            properties=[
-                Property(name="text", data_type=DataType.TEXT),
-                Property(name="user_id", data_type=DataType.TEXT),
-                Property(name="timestamp", data_type=DataType.DATE),
-            ]
-        )
+    # if "ChatMessage" not in client.collections.list_all():
+    #     client.collections.create(
+    #         "ChatMessage",
+    #         vectorizer_config=[
+    #             wvc.config.Configure.NamedVectors.text2vec_transformers(
+    #                 name="text_vector",
+    #                 source_properties=["text"]
+    #             )
+    #         ],
+    #         properties=[
+    #             Property(name="text", data_type=DataType.TEXT),
+    #             Property(name="user_id", data_type=DataType.TEXT),
+    #             Property(name="timestamp", data_type=DataType.DATE),
+    #         ]
+    #     )
     
     # if "FileInfo" not in client.collections.list_all():
     #     client.collections.create(
